@@ -1,0 +1,197 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@using System.Security.Claims
+@{
+    var user = await Context.AuthenticateAsync();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - SP</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="css/style-home.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/prism.css"/>
+    <link rel="stylesheet" href="~/css/tailwind.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="images/G.png"/>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <div class="container">
+            <div class="logo col-md-5 col-sm-5 col-xs-8">
+                <a href="/">
+                    <img src="images/Globo-Logo-white.svg" alt="logo"/>
+                </a><span class="text">TAKING TECH TO THE GLOBE</span>
+            </div>
+            <div class="mobile-togle col-md-12 col-sm-12 col-xs-12">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="hamburger" class="navbar-toggle x collapsed" data-toggle="collapse" data-target="#navbar-collapse-x">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#top"></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-x">
+                        <ul class="nav navbar-nav navbar-right">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Our story<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Brands</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">Robotics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">Media</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#">Support</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="right_section col-md-5 col-xs-12">
+                <div class="search">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button> <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Our story<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Brands</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Robotics</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Media</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Support</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-md-2 tw-flex tw-flex-wrap tw-justify-center tw-mt-6 tw-text-2xl">
+                @if (user.Succeeded)
+                {
+                    <div class="text-center">
+                        <a asp-action="Login" class="tw-text-white hover:tw-text-gray-500">
+                            <img class="tw-block tw-mx-auto" src="images/avatar.svg" alt="sign-in">
+                            @user.Principal.FindFirstValue(ClaimTypes.Name)
+                        </a>
+                    </div>
+                    <div>
+                        <a class="tw-text-white hover:tw-text-gray-500 tw-text-xl" role="button" data-toggle="collapse" href="#saml" aria-expanded="false" aria-controls="saml">
+                            Debug SAML 🤫
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center">
+                        <a asp-action="Login" class="tw-text-white hover:tw-text-gray-500">
+                            <img class="tw-block tw-mx-auto" src="images/avatar.svg" alt="sign-in">
+                            Sign-in
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </header>
+    
+    <div class="collapse tw-px-4 tw-pb-2" id="saml">
+        <pre><code class="language-xml">@Model.SamlMessage</code></pre>
+    </div>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <div class="main-footer col-md-12 col-xs-12">
+                <div class="foter-logo col-md-3 col-sm-3 col-xs-2">
+                    <a href="/">
+                        <img class="desktop" src="images/Globo-Logo-white-footer.svg">
+                        <img class="mobileImg" src="images/G.png">
+                    </a>
+                </div>
+                <div class="links col-md-5 col-md-5 col-xs-10">
+                    <ul class="quick-links col-md-4 col-xs-6">
+
+                        <li>
+                            <a href="#">Our Story</a>
+                        </li>
+                        <li>
+                            <a href="#">Brands</a>
+                        </li>
+                        <li>
+                            <a href="#">Robotics</a>
+                        </li>
+                        <li>
+                            <a href="#">Media</a>
+                        </li>
+                        <li>
+                            <a href="#">Support</a>
+                        </li>
+                    </ul>
+                    <ul class="quick-links second-row col-md-4 col-xs-6">
+
+                        <li>
+                            <a href="#">Careers</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#">Media Inquiries</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="video-sec col-md-4 col-sm-12 col-xs-12">
+            <h1 class="video-heading text-center">
+                <img src="images/pluralsight-white.png">
+            </h1>
+            <span class="border"></span>
+            <p class="footer-p">This site is created for demonstrative purposes only and does not offer any real products or services.
+            <p>
+        </div>
+    </footer>
+</div>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/prism.js"></script>
+<script>
+jQuery(document).ready(function(){
+  jQuery("#hamburger").click(function(){
+		jQuery("header").toggleClass("fixed");
+	});
+});
+</script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

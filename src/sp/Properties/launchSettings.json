@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "sp": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001"
+    }
+  }
+}
