@@ -1,0 +1,72 @@
+<Response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+  ID="_c3a39422-1d8f-48be-8699-4a914bf832ad"
+  InResponseTo="_3cf1e15cc523454cbdefb453be3b8e94"
+  Version="2.0"
+  IssueInstant="2021-08-03T04:04:31.8406385Z"
+  Destination="https://localhost:5001/saml/acs" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer>https://localhost:44342</saml:Issuer>
+  <Status>
+    <StatusCode
+      Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </Status>
+  <saml:Assertion
+    Version="2.0"
+    ID="_7300e4e9-f2e3-4e31-8703-506ad50bd01d"
+    IssueInstant="2021-08-03T04:04:33.8528362Z">
+    <saml:Issuer>https://localhost:44342</saml:Issuer>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod
+          Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+        <SignatureMethod
+          Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+        <Reference
+          URI="#_7300e4e9-f2e3-4e31-8703-506ad50bd01d">
+          <Transforms>
+            <Transform
+              Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform
+              Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </Transforms>
+          <DigestMethod
+            Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+          <DigestValue>fkN1UMO09lKEBQPosHyXw7ImEQmZRvfwBG1cI9Q5RWI=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>NCw65SVXJWf/x0DuHkTP77n8w9m2Z59CkhVvESqemVGwhIbkU9Xq9wrY50zqkcut92ahm2rkfOb2Hz/wbUDTe9f6ShwxgccuIDAUHF7TKd9iFCXlanr/wA9CbTCnaSFeUyiyS1Yc8CLsERCesptZFvTOyoeLbNW4+Zbp275bpHGDShCgQunlO1ySpnE4qTqpn85NZyZSp+PKkJ5iTOjRpSg7QQvUAihyJPyvVbjpeG3L91vk+O8zkV5mYh71vJp7OQfp6/H9+j+MIUndaFeQbvihCx9jKxVZHeUHjNK4mDDeqbDo2sLAjAIKpIajlN7opeOyzbwVUuLt9LX/kAciYQ==</SignatureValue>
+    </Signature>
+    <saml:Subject>
+      <saml:NameID
+        Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">1</saml:NameID>
+      <saml:SubjectConfirmation
+        Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <saml:SubjectConfirmationData
+          Recipient="https://localhost:5001/saml/acs"
+          NotOnOrAfter="2021-08-03T04:09:33.8532652Z"
+          InResponseTo="_3cf1e15cc523454cbdefb453be3b8e94" />
+      </saml:SubjectConfirmation>
+    </saml:Subject>
+    <saml:Conditions
+      NotBefore="2021-08-03T04:04:33.8536908Z"
+      NotOnOrAfter="2021-08-03T04:09:33.8537718Z">
+      <saml:AudienceRestriction>
+        <saml:Audience>https://localhost:5001</saml:Audience>
+      </saml:AudienceRestriction>
+    </saml:Conditions>
+    <saml:AuthnStatement
+      AuthnInstant="2021-08-03T04:04:33.8561792Z"
+      SessionIndex="_7300e4e9-f2e3-4e31-8703-506ad50bd01d">
+      <saml:AuthnContext>
+        <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml:AuthnContextClassRef>
+      </saml:AuthnContext>
+    </saml:AuthnStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute
+        Name="Name"
+        NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+        <saml:AttributeValue
+          xsi:type="xsd:string">Joe</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+</Response>
